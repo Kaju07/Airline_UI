@@ -13,7 +13,6 @@ class App extends Component {
 
 
   processData = async (el) => {
-    console.log(el, 'processdata')
     let Errors = []
     const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const isValidContact = /^(\+\d{1,3}[- ]?)?\d{10}$/;
@@ -56,7 +55,6 @@ class App extends Component {
   }
 
   changeHandler = (event) => {
-    console.log(event.target.files[0])
     Papa.parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,
@@ -65,7 +63,6 @@ class App extends Component {
     });
   };
   updateData = async (result) => {
-    console.log(result.data, 'result in updatedata')
     const data = result.data;
     this.setState({ data });
     await data.forEach((element, i) => {
@@ -150,9 +147,7 @@ class App extends Component {
                 <th>Errors</th>
               </tr>
               {this.state.data1.map((el, i) => {
-                {
-                  console.log(this.state.data1, '--data1')
-                }
+               
                 return (<>
 
                   <tr>
@@ -179,21 +174,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-// [
-//   {
-//     Booked_cabin: "Economy", Email: "abhishek@zzz.com", Fare_Class: "F", First_name: "Abhishek ", Id: "1", Last_name: "Kumar", Mobile_phone: "9876543210", PNR: "ABC123", Pax: "2", Ticketing_Date: "5/21/2019", Travel_date: "7/31/2019"
-//   },
-//   { Booked_cabin: "Economy", Email: "monin@zzz.com", Fare_Class: "C", First_name: "Monin", Id: "2", Last_name: "Sankar", Mobile_phone: "9876543211", PNR: "PQ234", Pax: "2", Ticketing_Date: "5/22/19", Travel_date: "8/30/19" },
-//   {
-//     Booked_cabin: "Business", Email: "radhika@zzz", Fare_Class: "T", First_name: "Radhika", Id: "3", Last_name: "Suresh", Mobile_phone: "9876543212", PNR: "ZZZ345", Pax: "4", Ticketing_Date: "5/21/19", Travel_date: "5/31/19"
-//   },
-
-//   {
-//     Booked_cabin: "Premium Economy", Email        :        "kben@zzz.com", Fare_Class: "M", First_name: "Kalyani", Id: "4", Last_name: "Ben", Mobile_phone: "9876543213", PNR: "A1B2C3", Pax: "1", Ticketing_Date: "5/21/19", Travel_date: "4/30/19"
-//   },
-
-//   { Booked_cabin: "Economy", Email: "sbatra@zzz.com", Fare_Class: "Z", First_name: "Somnath", Id: "5", Last_name: "Batra", Mobile_phone: "9876543214", PNR: "X1Y2Z4", Pax: "3", Ticketing_Date: "5/23/19", Travel_date: "7/25/19", discount_code: "no offer code" },
-// ]
